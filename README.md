@@ -1,17 +1,17 @@
 # Final-Project-Statistical-Modelling-with-Python
 
 ## Project/Goals
-(fill in your description and goals here)
+I was assigned to gather data and make a linear regression model out of said data.
 
 ## Process
-### (your step 1)
-### (your step 2)
+### first I gathered all the required data I needed from citybikes and foursquare
+### then I used sklearn to make a linear model out of the data
 
 ## Results
-(fill in what you found about the comparative quality of API coverage in your chosen area and the results of your model.)
+I didnt have enough data, so I didn't get much of a model. 
 
 ## Challenges 
-(discuss challenges you faced in the project)
+near the beginning, I was accidentally using the citybikes api 300 times in 1 session, so I was limited on what work I could do in a day. Later, I had so little data that I could barely get any model out of it.
 
 ## Future Goals
-(what would you do if you had more time?)
+I would use yelp as well and see if they have a place to get other types of data like ratings, as foursquare didnt have that, at least not in Abu Dhabi.
