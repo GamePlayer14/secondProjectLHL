@@ -1,8 +1,37 @@
 Join the data from Part 1 with the data from Part 2 to create a new dataframe.
 
+    df0['avg_distance'] = avgs
+
 Provide a visualization that you used as part of your EDA process. Explain the initial pattern or relationship you discoved through this visualization.
 
+    sns.pairplot(dfFinal, kind='scatter', plot_kws={'alpha': 0.4})
+    -not much correlation, mostly spread out.
+
 Put all your results in an SQLite3 database (remember, SQLite stores its databases as files in your local machine - make sure to create your database in your project's data/ directory!)
+
+      create_table = '''
+  CREATE TABLE IF NOT EXISTS project_table (
+      latitude FLOAT,
+      longitude FLOAT,
+      free_bikes INTEGER,
+      empty_slots INTEGER,
+      avg_distance FLOAT,
+      total_bikes INTEGER
+  );
+  '''
+  
+  execute_query(conn, create_table)
+  
+  for x in range(0,len(f.index)):
+      row = f.iloc[x]
+      query = '''
+      INSERT INTO 
+          project_table(latitude,longitude,free_bikes,empty_slots,avg_distance,total_bikes)
+      VALUES
+          ({},{},{},{},{},{})
+      '''.format(str(row.latitude),str(row.longitude),str(row.free_bikes),str(row.empty_slots),str(row.avg_distance),str(row.total_bikes))
+  
+      execute_query(conn,query)
 
 Look at the data before and after the join to validate your data.
 
