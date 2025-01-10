@@ -1,0 +1,36 @@
+
+Send a request to Foursquare with a small radius (1000m) for all the bike stations in your city of choice.
+
+  dfa = []
+  for x in range(len(df0)):
+      url = "https://api.foursquare.com/v3/places/search?query=restaurant%20bar&ll={}%2C{}&limit=50".format(df0['latitude'][x],df0['longitude'][x])
+      
+      headers = {
+          "accept": "application/json",
+          "Authorization": "fsq34bQtxg6asQgePHYMhp2Sfm5LXoTJPoduCEq3rxhgccg="
+      }
+      
+      response = requests.get(url, headers=headers)
+  
+      print(response)
+      
+      dfa.append(response.json())
+
+Parse through the response to get the POI (such as restaurants, bars, etc) details you want (ratings, name, location, etc)
+  
+  bigList = []
+  for item in dfa:
+      smallList = []
+      for block in item['results']:
+          try:
+              info = [block['categories'][0]['name'],block['distance']]
+          except Exception as e:
+              info = ''
+          smallList.append(info)
+      bigList.append(smallList)
+
+Put your parsed results into a DataFrame
+
+  df = pd.DataFrame(bigList)
+
+(did not use yelp)
